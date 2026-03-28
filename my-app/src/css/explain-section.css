@@ -1,0 +1,63 @@
+.explaination-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.item-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 100px; /* Space between the image stack and text */
+    max-width: 1100px;
+    width: 90%;
+}
+
+.image-stack {
+    position: relative;
+    width: 400px; /* Base width for the cards */
+    height: 400px; /* Base height */
+}
+
+.explain-img-card {
+    width: 300px;
+    height: 350px;
+    background-color: #d1d5db; /* Gray like your wireframe */
+    border: 1px solid #9ca3af;
+}
+
+.card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.card-front {
+    position: absolute;
+    top: 60px;  /* Pushes it down */
+    left: 80px; /* Pushes it right */
+    z-index: 2;
+    background-color: #c4c4c4; /* Slightly different gray to see overlap */
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.05); /* Adds depth */
+}
+
+/* TEXT LOGIC */
+.text-content {
+    flex: 1;
+}
+
+.explaination-title {
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.explaination-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #4b5563;
+    max-width: 500px;
+}
