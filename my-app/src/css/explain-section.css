@@ -1,21 +1,36 @@
 .explaination-container {
+    display: flex;
+    justify-content: center; /* Centers vertically */
+    align-items: center;     /* Centers horizontally */
+    
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.item-container {
+    width: 100%;
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
+    justify-content: center; /* Pushes the wrapper to the center */
 }
 
 .item-wrapper {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 100px; /* Space between the image stack and text */
+    
+    gap: 80px; 
+    
     max-width: 1100px;
     width: 90%;
 }
 
 .image-stack {
-    position: relative;
+    display: flex;
+    flex-direction: row;
+
+    position: relative; 
     width: 400px; /* Base width for the cards */
     height: 400px; /* Base height */
 }
@@ -46,6 +61,7 @@
 /* TEXT LOGIC */
 .text-content {
     flex: 1;
+    text-align: left;
 }
 
 .explaination-title {

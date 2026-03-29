@@ -3,8 +3,8 @@
 function Careers() {
     return(
         <>
-        
-        </>
+    
+        </>    
     )
 }
 

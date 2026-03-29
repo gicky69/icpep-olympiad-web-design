@@ -1,5 +1,9 @@
-:root {
-
+html, body, #root {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 #root > section,
@@ -8,7 +12,9 @@
   .hardwaresoftware-container,
   .projects-container,
   .careers-container {
+    width: 100%;
     min-height: 100vh;
+    min-height: 100dvh;
 
     display: flex;
     flex-direction: column;

@@ -1,7 +1,28 @@
 
+.headersec-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-.hook-val {
-    font-size: 4rem;    
+.hook-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.hook-text-container {
+    margin: 0 10vw;
+}
+
+.hook-text {
+    font-size: clamp(2.5rem, 5vw, 4rem); 
     line-height: 1.2;
     font-weight: 800;
 }    

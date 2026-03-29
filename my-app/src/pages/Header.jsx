@@ -4,11 +4,14 @@ import '../css/Header.css'
 function Header() {
     return(
         <>
-        <div className="object-container">
+        <div className="headersec-container">
             <div className="hook-container">
-                <h1 className="hook-val">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                </h1>
+                <div className="hook-text-container">
+                    <h1 className="hook-text">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    </h1>
+                </div>
+                
                 <div className="object-container">
                     {/* hook-obj-img */}
 
@@ -21,6 +24,7 @@ function Header() {
                 </span>
             </div>
         </div>
+        
         </>
     )
 }
