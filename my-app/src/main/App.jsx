@@ -8,6 +8,7 @@ import Careers from '../pages/Careers-section.jsx'
 import HeaderNavbar from '../pages/Navbar.jsx'
 import FloatingNavbar from '../pages/Floating-Navbar.jsx'
 import Landing from '../pages/Landing.jsx'
+import KeyboardPage2 from '../pages/Keyboard-Page-2.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -38,21 +39,13 @@ function App() {
     <section className="landing-container">
       <Landing/>
     </section>
-    <section className="header-container">
+    {/* <section className="header-container">
       <Header/>
-    </section>
-    <section className="explaination-container">
-      <Explain/>
-    </section>
-    <section className="hardwaresoftware-container">
-      <HardwareSoftware/>
-    </section>
-    <section className="projects-container">
-      <Projects/>
-    </section>
-    <section className="careers-container">
-      <Careers/>
-    </section>
+    </section> */}
+    <Explain/>
+    <HardwareSoftware/>
+    <Projects/>
+    <Careers/>
     </>
   )
 }
