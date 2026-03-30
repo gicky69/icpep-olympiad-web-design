@@ -1,4 +1,7 @@
 
+
+
+
 .headersec-container {
     width: 100%;
     min-height: 100vh;
@@ -7,6 +10,7 @@
     align-items: center;
     justify-content: center;
 }
+
 
 .hook-container {
     width: 100%;
@@ -26,3 +30,38 @@
     line-height: 1.2;
     font-weight: 800;
 }    
+
+
+@media (max-width: 768px) {
+
+    .landing-container {
+        position: relative;
+        overflow: visible;
+        height: 100vh;
+        width: 100%;
+    }
+
+    .landing-content {
+        z-index: 1;
+        width:40%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        height: 100%;
+        margin-left: 0;
+        padding: 0;
+    }
+
+
+    .header-svg {
+        stroke-width: 2px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        transform: scale(1);
+    }
+}

@@ -1,9 +1,13 @@
 import '../css/Header.css'
 
-
 function Header() {
+
+    
+
+
     return(
         <>
+
         <div className="headersec-container">
             <div className="hook-container">
                 <div className="hook-text-container">

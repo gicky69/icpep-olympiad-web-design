@@ -1,0 +1,68 @@
+
+/* TUTORIAL FROM: https://www.youtube.com/watch?v=OeaHnxahf40 */
+
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+}
+
+.horizontal {
+  width: 100vh;
+  height: 100vw;
+  margin: 0;
+  padding: 0;
+  transform: rotate(-90deg) translateX(-100vh);
+  transform-origin: top left; 
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: sticky; 
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+}
+
+.panels {
+    display: flex;
+    flex-direction: row;
+    width: 300vw;
+    height: 100vh;
+    transform: rotate(90deg) translateY(-100vh);
+    transform-origin: top left;
+}
+
+.panel {
+  min-width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.blue { background: blue; }
+.green { background: green; }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.landing-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: black;
+    width: 30%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    text-align: left;
+    padding: 6rem;
+    line-height: 1.2;
+    font-size: 4rem;
+}
+
+.landing-svg {
+    transform: translateY(100px);
+    position: relative;
+
+}

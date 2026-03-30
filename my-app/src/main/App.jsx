@@ -7,6 +7,7 @@ import Projects from '../pages/Projects-section.jsx'
 import Careers from '../pages/Careers-section.jsx' 
 import HeaderNavbar from '../pages/Navbar.jsx'
 import FloatingNavbar from '../pages/Floating-Navbar.jsx'
+import Landing from '../pages/Landing.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -31,9 +32,12 @@ function App() {
 
   return (
     <>
-    <HeaderNavbar />
+    {/* <HeaderNavbar /> */}
     <FloatingNavbar show={showFloating}/>
-    
+
+    <section className="landing-container">
+      <Landing/>
+    </section>
     <section className="header-container">
       <Header/>
     </section>
