@@ -3,7 +3,9 @@
 function Careers() {
     return(
         <>
-    
+        <section className="careers-section">
+            
+        </section>
         </>    
     )
 }

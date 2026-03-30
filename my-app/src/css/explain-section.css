@@ -8,17 +8,17 @@
     pointer-events: none; /* 2. Optional but highly recommended: stops the line from blocking you when trying to highlight text! */
 }
 
-    .explaination-container {
-        width: 100%;
-        min-height: 100vh;  /* Use min-height so it doesn't crush content on small screens */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /* Removed overflow: hidden so the pin-spacer works properly */
-        position: relative;
-        background-color: #FFFEFB; /* Match your app background */
-        background-color: blue;
-    }
+.explaination-container {
+    width: 100%;
+    min-height: 100vh;  /* Use min-height so it doesn't crush content on small screens */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Removed overflow: hidden so the pin-spacer works properly */
+    position: relative;
+    background-color: #FFFEFB; /* Match your app background */
+    background-color: blue;
+}
 
 /* 2. Remove redundant heights */
 .item-container {

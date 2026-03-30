@@ -44,8 +44,8 @@ function App() {
     </section>
     <Explain/>
     <HardwareSoftware/>
-    <Projects/>
     <Careers/>
+    <Projects/>
     </>
   )
 }
