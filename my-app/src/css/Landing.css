@@ -1,10 +1,9 @@
 
 /* TUTORIAL FROM: https://www.youtube.com/watch?v=OeaHnxahf40 */
-
-
 .wrapper {
   width: 100%;
   height: 100vh;
+  overflow: hidden;
 }
 
 .horizontal {
@@ -14,7 +13,7 @@
   padding: 0;
   transform: rotate(-90deg) translateX(-100vh);
   transform-origin: top left; 
-  overflow-x: hidden;
+  overflow-x: visible;
   overflow-y: scroll;
   position: sticky; 
 
@@ -26,22 +25,36 @@
 .panels {
     display: flex;
     flex-direction: row;
-    width: 300vw;
+    width: 200vw;
     height: 100vh;
     transform: rotate(90deg) translateY(-100vh);
     transform-origin: top left;
+    gap: 0;
 }
 
 .panel {
   min-width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   color: white;
+  margin: 0;
+  padding: 0;
+  gap: 0;
 }
 
-.blue { background: blue; }
+.panel-last {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: visible;
+  padding-bottom: 300px;
+
+}
+
 .green { background: green; }
+
 
 ::-webkit-scrollbar {
   display: none;
@@ -53,16 +66,68 @@
     color: black;
     width: 30%;
     height: 100%;
-    align-items: center;
+    align-items: left;
     display: flex;
+    flex-direction: column;
     text-align: left;
-    padding: 6rem;
+    padding-left: 6rem;
     line-height: 1.2;
     font-size: 4rem;
+    justify-content: center;
+}
+
+.line-small {
+  font-size: 0.9rem;
+  font-weight:300;
+  margin-top: 10px;
+
 }
 
 .landing-svg {
-    transform: translateY(100px);
-    position: relative;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  pointer-events: none;
+  transform: rotate(90deg) translateX(1600px) translateY(250px) scale(6);
+  
+}
 
+.keyboard-wrapper {
+  position: absolute; /* 🔥 key */
+  z-index: 999; /* above everything */
+  width: 999px;
+}
+
+.keyboard-svg {
+  display: block;
+  width: 100%;
+}
+
+.header-title {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  position: absolute;
+  align-items: left;
+  margin: 0;
+  transform: translate(-15px, -50px);
+}
+
+.header-line {
+  color: black;
+  text-align: left;
+  justify-content: flex-start;
+  font-size: 10rem;
+  line-height: 8rem;
+}
+
+
+.tagline {
+  width: 70%;
+  text-align: left;
+  margin-bottom: 5px;
+  color: black;
+  font-weight: bold;
+  transform: translate(10px, -250px);
 }

@@ -17,6 +17,7 @@
         /* Removed overflow: hidden so the pin-spacer works properly */
         position: relative;
         background-color: #FFFEFB; /* Match your app background */
+        background-color: blue;
     }
 
 /* 2. Remove redundant heights */

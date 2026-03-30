@@ -39,9 +39,9 @@ function App() {
     <section className="landing-container">
       <Landing/>
     </section>
-    {/* <section className="header-container">
+    <section className="header-container">
       <Header/>
-    </section> */}
+    </section>
     <Explain/>
     <HardwareSoftware/>
     <Projects/>
