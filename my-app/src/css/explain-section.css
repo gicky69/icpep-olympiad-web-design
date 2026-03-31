@@ -118,7 +118,6 @@
     position: relative;
 }
 
-/* 2. Remove redundant heights */
 .item-container {
     width: 100%;
     z-index: 10;
@@ -127,7 +126,6 @@
     justify-content: center;
 }
 
-/* 3. The Row Wrapper (This is the crucial fix!) */
 .item-wrapper {
     width: 100%;
     max-width: 1440px;
