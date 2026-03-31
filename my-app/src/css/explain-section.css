@@ -1,3 +1,104 @@
+.header-explain-container {
+  position: relative;
+
+  background:
+    /* TOP CENTER */
+    radial-gradient(
+      ellipse 120% 80% at 50% 60%,  
+      rgba(255, 140, 0, 1) 0%,   
+      rgba(255, 140, 0, 0.5) 30%,
+      transparent 60%
+    ),
+
+    /* BOTTOM CENTER */
+    radial-gradient(
+      ellipse 120% 50% at 70% 100%, 
+      rgb(60, 132, 234, 1) 0%,
+      rgba(66, 145, 255, 0.5) 30%,
+      transparent 60%
+    ),
+
+    /* BASE GRADIENT */
+    linear-gradient(
+      to bottom,
+      #FFFEFB 0%,
+      #FFFEFB 20%,
+      #000000 100%
+    );
+}
+
+.keyboard-layer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* keyboard */
+.keyboard-wrapper {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(100px, 100vw, 1000px) !important;
+  z-index: 999;
+}
+
+.keyboard-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.header-title-wrapper {
+  position: absolute;
+  top: 15%;
+  align-items: center;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.header-line {
+  font-size: clamp(3.5rem, 11vw, 11rem);
+  font-weight: bold;
+  line-height: 0.9;
+  text-align: left;
+}
+
+/* tagline */
+.tagline {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  font-weight: 700;
+}
+
+.orangeRadiant-header {
+    
+    left: -1000px;   /* 👈 move horizontally using LEFT instead */
+    bottom: 0;
+    top: 0;
+    z-index: -1;
+    filter: blur(0.2px);
+    position: absolute;
+}
+
+
+.blueRadiant-header {
+    width: clamp(600px, 180vw, 1600px);
+    z-index: -2;
+    display: block;
+    filter: blur(0.2px);
+
+    position: absolute;
+    right:-300px; /* 👈 move horizontally using RIGHT instead */
+    bottom: -1000px;
+}
+
+
+
 .bg-line-svg {
     position: absolute;
     top: 0;
@@ -8,16 +109,13 @@
     pointer-events: none; /* 2. Optional but highly recommended: stops the line from blocking you when trying to highlight text! */
 }
 
-.explaination-container {
+.explaination-container, .header-container {
     width: 100%;
     min-height: 100vh;  /* Use min-height so it doesn't crush content on small screens */
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Removed overflow: hidden so the pin-spacer works properly */
     position: relative;
-    background-color: #FFFEFB; /* Match your app background */
-    background-color: blue;
 }
 
 /* 2. Remove redundant heights */
@@ -70,8 +168,8 @@
 }
 
 .explaination-title {
-    font-size: 5rem;
-    font-weight: 800;
+    font-size: 4rem;
+    font-weight: 700;
     line-height: 1.1; /* Tighter line height for big text looks better */
     margin-top: 0;
     margin-bottom: 20px;
@@ -79,10 +177,10 @@
 }
 
 .explaination-description {
-    font-size: 1.25rem; /* Slightly larger for readability */
+    font-size: 0.9rem; /* Slightly larger for readability */
     line-height: 1.6;
-    color: #4b5563;
-    max-width: 500px;
+    color: #1B0321;
+    max-width: 700px;
 }
 
 /*Quote*/
@@ -137,6 +235,7 @@
         font-size: 2.5rem; /* Shrink the massive text for phones */
     }
 }
+
 
 
 /* Mobile Responsiveness */ 

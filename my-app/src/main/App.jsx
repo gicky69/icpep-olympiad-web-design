@@ -39,9 +39,6 @@ function App() {
     <section className="landing-container">
       <Landing/>
     </section>
-    <section className="header-container">
-      <Header/>
-    </section>
     <Explain/>
     <HardwareSoftware/>
     <Careers/>
