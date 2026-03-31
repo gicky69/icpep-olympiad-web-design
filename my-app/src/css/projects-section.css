@@ -1,6 +1,6 @@
 /* Container to hide the native horizontal scrollbar */
 body {
-  
+
 }
 
 .museum-wrapper {
@@ -43,4 +43,44 @@ body {
   border-radius: 8px; /* Optional: smooths the edges like in your reference */
 
   margin-bottom: 20px;
+}
+
+.narrative1-title {
+    /* clamp() makes it massive on desktop (4.5rem) but shrinks it gracefully on mobile (2.5rem) */
+    font-size: clamp(2.5rem, 5vw, 4.5rem); 
+    font-weight: 800;
+    
+    /* Decrease line-height from 1.5 to 1.2. Figma headings are usually tight! */
+    line-height: 1.2; 
+    margin: 0;
+    text-align: left; 
+}
+
+.narrative2-section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1B1121; /* Matches the deep dark purple/black from the image */
+    position: relative;
+    overflow: hidden;
+}
+
+.narrative2-title {
+    /* Using clamp makes it massive on desktop but shrinks perfectly for mobile */
+    font-size: clamp(3rem, 6vw, 5.5rem); 
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin: 0;
+    text-align: left; 
+}
+
+.highlight-orange {
+    /* Using a linear gradient clipped to the text gives it that premium modern look */
+    background: linear-gradient(90deg, #FFB347 0%, #FF7B00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }

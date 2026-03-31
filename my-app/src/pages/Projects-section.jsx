@@ -49,8 +49,44 @@ function Projects() {
                 scrub: true,
                 invalidateOnRefresh: true,
             }            
-
         });
+
+        
+        const narrate1TL = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".narrative1-section",
+                start: "top top",
+                end:"+=200%",
+                pin: true,
+                pinSpacing: true,
+                scrub: 1,
+                // markers: true,
+            }
+        });
+
+        narrate1TL.from(".narrative1-title", {
+            y: 200, 
+            opacity: 0,
+            ease: "power2.inOut",
+        })
+
+        const narrate2TL = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".narrative2-section",
+                start: "top top",
+                end:"+=250%",
+                pin: true,
+                pinSpacing: true,
+                scrub: 1,
+                // markers: true,
+            }
+        });
+
+        narrate2TL.from(".narrative2-title", {
+            y: 200, 
+            opacity: 0,
+            ease: "power2.inOut",
+        })
 
         const observer = new ResizeObserver(() => ScrollTrigger.refresh());
         observer.observe(track);
@@ -96,6 +132,27 @@ function Projects() {
                         <p>{item.text}</p>
                     </div>
                 ))}
+            </div>
+        </section>
+
+        
+        <section className="narrative1-section default-bg">
+            <div className="1-narrative item-container">
+                <div className="narrative-item-wrapper">
+                    <h1 className="narrative1-title">
+                        From the microscopic logic of a single chip to the global architecture of the internet—
+                    </h1>
+                </div>
+            </div>
+        </section>
+
+        <section className="narrative2-section default-bg">
+            <div className="narrative2-container item-container">
+                <div className="narrative-item-wrapper">
+                    <h1 className="narrative2-title">
+                        the choice of what you build is <span className="highlight-orange">yours.</span>
+                    </h1>
+                </div>
             </div>
         </section>
     </div>

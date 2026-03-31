@@ -1,0 +1,124 @@
+.final-sequence-wrapper {
+    position: relative;
+    width: 100%;
+    background-color: #1B1121;
+    overflow: hidden;
+}
+
+.theend-section, .kidtheend-section {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 2; /* Text stays above the line */
+    background: transparent; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.theend-container {
+    width: 100%;
+    height: 100%;
+    position: relative; /* CRITICAL: Text inside this will align relative to this box */
+    max-width: 1600px; /* Optional: Keep text from getting too far apart on wide screens */
+}
+
+/* FIX 1: Fix the 'chopped' background line */
+.svg-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* This will now be 200vh effectively */
+    z-index: 1;
+    pointer-events: none;
+    transform: translate(5%, -15%) scale(0.8);
+}
+
+/* Ensure the path itself fills the scaling box correctly */
+.svg-background-global svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* FIX 2: Align the texts properly and prevent overlapping */
+.theend-content {
+    position: relative;
+    z-index: 5; /* Keep text above the line */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the whole content block vertically */
+}
+
+.main-heading {
+    font-size: clamp(2rem, 5vw, 4rem); /* Massive scalable font size */
+    color: white;
+    text-align: left;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 5vw;
+    margin-bottom: 30vh; /* Massive space between the two blocks of text, matching image */
+    max-width: 50vw; /* Constrain width so it breaks onto multiple lines, preventing sprawl */
+}
+
+.kid-illustration-container {
+    position: absolute;
+    bottom: 0;
+    width: 35vw; /* Adjust width based on your design */
+    max-width: 600px;
+    z-index: 10; /* Ensure she sits ABOVE the background line */
+}
+
+.kid-illustration-content {
+    transform: translate(0%, 30%);
+    scale: 0.8;
+}
+
+.kid-illustration-container svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.sub-heading {
+    font-size: clamp(2rem, 5vw, 4rem);
+    color: white;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 5vw;
+    align-self: flex-end; /* Shoves the whole 'Question Left' block to the right edge, matching image */
+    text-align: right; /* Aligns the lines of text within that block to the right */
+    max-width: 50vw; /* Constrain width to force line breaks */
+}
+
+.final-call {
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: white;
+    font-weight: 800;
+}
+
+.highlight-you {
+    color: #F28C28; /* The orange from your Figma */
+}
+
+/* Optional: Make text center-aligned on mobile */
+@media (max-width: 768px) {
+    .svg-background {
+        transform: translate(-45%, -45%) scale(0.8); 
+        
+        height: auto;
+        width: 140%;
+        opacity: 0.6;
+    }
+}
+
+/* --- SMALL MOBILE (iPhone SE, etc.) --- */
+@media (max-width: 480px) {
+    .svg-background {
+        transform: translate(-50%, -30%) scale(0.6);
+        width: 180%; /* Even wider relative to the tiny screen to maintain the 'path' look */
+    }
+}
