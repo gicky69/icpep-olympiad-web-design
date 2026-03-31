@@ -63,6 +63,8 @@ const careersData = [
 function SkewTransition() {
     const mainRef = useRef(null);
     const videoRefs = useRef([]);
+    const introTextRef = useRef(null);
+
     useGSAP(() => {
         gsap.set(".software-section:not(.slide-0)", { 
             yPercent: 100 
@@ -132,6 +134,19 @@ function SkewTransition() {
 
         tl.to({}, {duration: 0.2});
 
+        gsap.from(introTextRef.current, {
+            y: 80, // Starts 80px lower
+            opacity: 0, 
+            duration: 2,
+            pinSpacing: true, 
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: introTextRef.current,
+                start: "top 85%", // Triggers when the top of the text is 85% down the viewport
+                toggleActions: "play none none reverse" // Plays when scrolling down, reverses when scrolling back up
+            }
+        });
+
     }, { scope: mainRef });
 
     useEffect(() => {
@@ -187,7 +202,7 @@ function SkewTransition() {
             {/* 2. THE LAST SECTION (NOW TRULY OUTSIDE THE PINNED BOX) */}
             <section className="careers-last-section">
                 <div className="careers-text-container">
-                    <h2 className="projects-intro-text">
+                    <h2 className="projects-intro-text" ref={introTextRef}>
                         Theory becomes reality when these fields collide—let's look at <span className="italic-text">some</span> projects that define <br/> 
                         <span className="highlight-text">Computer Engineering.</span>
                     </h2>

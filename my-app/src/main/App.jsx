@@ -4,11 +4,12 @@ import Header from '../pages/Header.jsx'
 import Explain from '../pages/Explain-section.jsx'
 import HardwareSoftware from '../pages/HardwareSoftware-section.jsx'
 import Projects from '../pages/Projects-section.jsx'
-import Careers from '../pages/Careers-section.jsx' 
 import HeaderNavbar from '../pages/Navbar.jsx'
 import FloatingNavbar from '../pages/Floating-Navbar.jsx'
 import Landing from '../pages/Landing.jsx'
-import KeyboardPage2 from '../pages/Keyboard-Page-2.jsx'
+import SkewTransition from '../pages/Careers-section.jsx'
+import BigProjects from '../pages/Bigprojects-section.jsx'
+import TheEnd from '../pages/TheEnd-section.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -42,7 +43,9 @@ function App() {
     <Explain/>
     <HardwareSoftware/>
     <Projects/>
-    <Careers/>
+    <SkewTransition/>
+    <BigProjects/>
+    <TheEnd/>
     </>
   )
 }
