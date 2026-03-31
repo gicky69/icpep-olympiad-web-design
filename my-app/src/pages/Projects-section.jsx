@@ -23,77 +23,103 @@ gsap.registerPlugin(ScrollTrigger);
 function Projects() {
     const mainRef = useRef(null);
     const trackRef = useRef(null);
-
     useGSAP(() => {
         if (!trackRef.current || !mainRef.current) return;
 
         const track = trackRef.current;
-
-        const getScrollAmount = () => {
-            return track.scrollWidth - window.innerWidth;
-        };
-
-        const section = document.querySelector(".museum-section");
         const container = document.querySelector(".museum-track");
 
-        gsap.ticker.lagSmoothing(0);
+        const getScrollAmount = () => track.scrollWidth - window.innerWidth;
 
+        // 1. Horizontal Scroll Timeline
         gsap.to(container, {
             x: () => -getScrollAmount(),
             ease: "none",
             scrollTrigger: {
-                trigger: section,
+                trigger: ".museum-section",
                 pin: true,
                 start: "top top",
                 end: () => `+=${getScrollAmount()}`,
-                scrub: true,
+                scrub: 1,
                 invalidateOnRefresh: true,
             }            
         });
 
-        
         const narrate1TL = gsap.timeline({
             scrollTrigger: {
                 trigger: ".narrative1-section",
                 start: "top top",
-                end:"+=200%",
+                end: "+=150%", // Slightly shorter pin for tighter feel
                 pin: true,
                 pinSpacing: true,
                 scrub: 1,
-                // markers: true,
             }
         });
 
-        narrate1TL.from(".narrative1-title", {
-            y: 200, 
-            opacity: 0,
-            ease: "power2.inOut",
-        })
+        const path = document.querySelector(".narrative1-path")
 
+
+        if (path) {
+            const length = path.getTotalLength();
+            console.log("Path length is:", length);
+            gsap.set(path, {
+                strokeDasharray: length,
+                strokeDashoffset: length
+            });
+
+            narrate1TL.to(path, {
+                strokeDashoffset: 0,
+                duration: 1.5,
+                ease: "power1.inOut"
+            }, 0); 
+        }
+
+        narrate1TL.to(".museum-wrapper", {
+            "--grad-left-solid": "rgba(255, 0, 85, 0)",
+            "--grad-right-solid": "rgba(66, 145, 255, 0)",
+            duration: 1
+        });
+        narrate1TL.to(".narrative1-section", {
+            backgroundColor: "#1B1121", // Or your solid target color
+            backgroundImage: "none",     // Explicitly kill any local gradients
+            duration: 1,
+            ease: "none"
+        }, "<");
+        narrate1TL.to(".narrative2-section", {
+            backgroundColor: "#1B1121", // Or your solid target color
+            backgroundImage: "none",     // Explicitly kill any local gradients
+            duration: 1,
+            ease: "none"
+        }, "<");
+
+        narrate1TL.from(".narrative1-title", {
+            y: 100, // Reduced from 200 for a smoother glide
+            opacity: 0,
+            ease: "power2.out",
+        }, "<");
+
+        
+
+        // 3. Narrative 2 Timeline
         const narrate2TL = gsap.timeline({
             scrollTrigger: {
                 trigger: ".narrative2-section",
                 start: "top top",
-                end:"+=250%",
+                end: "+=150%",
                 pin: true,
                 pinSpacing: true,
                 scrub: 1,
-                // markers: true,
             }
         });
+        
 
         narrate2TL.from(".narrative2-title", {
-            y: 200, 
+            y: 100, 
             opacity: 0,
-            ease: "power2.inOut",
-        })
+            ease: "power2.out",
+        });
 
-        const observer = new ResizeObserver(() => ScrollTrigger.refresh());
-        observer.observe(track);
-
-        return () => observer.disconnect();
     }, { scope: mainRef });
-
     const items = [
         // The large starting image
         { img: img1, text: "Kiosks connect the kitchen...", offsetY: "15vh", marginLeft: "0vw", width: "400px" }, 
@@ -126,10 +152,24 @@ function Projects() {
                             marginTop: item.offsetY,
                             marginLeft: item.marginLeft,
                             width: item.width,
-                         }}
+                        }}
                     >
-                        <img src={item.img} alt={item.text} />
-                        <p>{item.text}</p>
+                        {/* We wrap the image and text in a "glass-effect" card */}
+                        <div className="museum-card">
+                            {/* The image now fills the top part of the card */}
+                            <div className="card-image-container">
+                                <img src={item.img} alt={item.text} />
+                                {/* We can add a hidden 'glow-effect' div here for hover */}
+                                <div className="hover-glow"></div>
+                            </div>
+                            
+                            {/* The text sits in its own footer below the image */}
+                            <div className="card-details">
+                                <p className="item-text">{item.text}</p>
+                                {/* Optional: Add a subtle category tag for detail */}
+                                <span className="item-category">Project</span>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -137,6 +177,7 @@ function Projects() {
 
         
         <section className="narrative1-section default-bg">
+            
             <div className="1-narrative item-container">
                 <div className="narrative-item-wrapper">
                     <h1 className="narrative1-title">
@@ -146,7 +187,8 @@ function Projects() {
             </div>
         </section>
 
-        <section className="narrative2-section default-bg">
+        <section className="narrative2-section default-bg">        
+            
             <div className="narrative2-container item-container">
                 <div className="narrative-item-wrapper">
                     <h1 className="narrative2-title">

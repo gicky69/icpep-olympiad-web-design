@@ -1,15 +1,24 @@
-import andSVG from '../assets/svgs/hs-and/and.svg' 
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '../css/hardware-software.css'
 
 
+gsap.registerPlugin(ScrollTrigger)
+
 function HardwareSoftware() {
     const mainRef = useRef(null);
 
     useGSAP(() => {
+        gsap.set(".hard-software-section", {
+            "--hs-left-x": "-35%",
+            "--hs-left-y": "50%",
+            "--hs-left-alpha": 0,
+            "--hs-right-x": "135%",
+            "--hs-right-y": "50%",
+            "--hs-right-alpha": 0,
+        });
 
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -23,37 +32,44 @@ function HardwareSoftware() {
             }
         });
 
+        tl.to(".hard-software-section", {
+            "--grad-left-solid": "rgba(255, 0, 85, 1)",
+            "--grad-left-fade": "rgba(255, 0, 85, 0)",
+            duration: 1, 
+        })
+        .to(".hard-software-section", {
+            "--grad-right-solid": "rgba(79, 255, 66, 1)",
+            "--grad-right-fade": "rgba(66, 145, 255, 0)",
+            duration: 1,
+        }, "-=0.5") // Overlap slightly for a smoother transition
+
         tl.from(".hardware-title", {
-            y: 200,
+            x: -200,
             opacity: 0,
             ease: "power2.inOut",
         })
-        .from(".hardware-subtext", {
-            y: 200,
-            opacity: 0,
-            ease: "power2.inOut",
-        })
-
-
-
+        .from(".ampersand-wrapper", { 
+            y: 200, 
+            opacity: 0, 
+            ease: "power2.inOut" 
+        }, "<")
         .from(".software-title", {
-            y: 200,
+            x: 200,
+            opacity: 0,
+            ease: "power2.inOut",
+        }, "<")
+        .from(".hardware-subtext", {
+            x: -200,
             opacity: 0,
             ease: "power2.inOut",
         })
         
          .from(".software-subtext", {
-            y: 200,
+            x: 200,
             opacity: 0,
             ease: "power2.inOut",
-        })
-        .from(".ampersand-wrapper", { 
-          y: 200, 
-          opacity: 0, 
-          ease: "power2.inOut" 
-      }, "<0.2");
-
-
+        });
+    
         const ampersandPath = document.querySelector(".ampersand-path");
         
         if (ampersandPath) {
@@ -92,7 +108,7 @@ function HardwareSoftware() {
                     {/* 1. Hardware Block (Pushed Up) */}
                     <div className="text-block hardware-block">
                         <h1 className="hs-title hardware-title">Hardware</h1>
-                        <p className="hs-subtext hardware-subtext">Lorem ipsum dolor met.</p>
+                        <p className="hs-subtext hardware-subtext">The Body</p>
                     </div>
 
                     <div className="ampersand-wrapper">
@@ -115,7 +131,7 @@ function HardwareSoftware() {
                     {/* 3. Software Block (Pushed Down) */}
                     <div className="text-block software-block">
                         <h1 className="hs-title software-title">Software</h1>
-                        <p className="hs-subtext software-subtext">Lorem ipsum dolor met.</p>
+                        <p className="hs-subtext software-subtext">The Mind</p>
                     </div>
 
                 </div>

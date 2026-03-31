@@ -8,6 +8,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '../css/explain-section.css'
+import img1 from '../assets/img/explaination/img1.png'
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,26 +21,28 @@ function Explaination() {
                 scrollTrigger: {
                     trigger: ".header-container",
                     start: "top top",
-                    end: "+=1500", // adjust length as needed
+                    end: "+=150%", // adjust length as needed
                     pin: true,
                     scrub: 1,
                 }
             });
 
-            // 1. Tagline reveal (line by line)
-            headerTl.from(".tagline-line", {
-                y: 100,
-                opacity: 0,
-                stagger: 0.3,
-                ease: "power3.out"
-            });
-
-            // 2. Keyboard reveal (after tagline)
+             // 2. Keyboard reveal (after tagline)
             headerTl.from(".keyboard-wrapper img", {
                 y: -50,
                 opacity: 0,
                 scale: 0.9,
                 ease: "power2.out"
+            });
+
+            headerTl.to(".keyboard-wrapper", {
+                y: () => {
+                    return window.innerWidth < 768
+                        ? window.innerHeight * 0.15
+                        : window.innerHeight * 0.40;
+                },
+                duration: 3,
+                ease: "none"
             });
 
             // 3. Title reveal (after keyboard)
@@ -50,23 +53,25 @@ function Explaination() {
                 ease: "power3.out"
             });
 
-           headerTl.to(".keyboard-wrapper", {
-                y: () => {
-                    return window.innerWidth < 768
-                        ? window.innerHeight * 0.15
-                        : window.innerHeight * 0.40;
-                },
-                duration: 3,
-                ease: "none"
+
+            // 1. Tagline reveal (line by line)
+            headerTl.from(".tagline-line", {
+                y: 100,
+                opacity: 0,
+                stagger: 0.3,
+                ease: "power3.out"
             });
+
+            
+           
             headerTl.to(".header-title", {
                 zIndex: 1999,
             });
 
-            headerTl.to(".orangeRadiant-header", {
-                y: 150, // 👈 moves DOWN
-                ease: "none"
-            }, 0);
+            // headerTl.to(".orangeRadiant-header", {
+            //     y: 150,
+            //     ease: "none"
+            // }, 0);
 
 
 
@@ -74,13 +79,18 @@ function Explaination() {
                 scrollTrigger: {
                     trigger: ".explaination-container",
                     start: "top top",
-                    end: "+=1500",      // <-- CRITICAL: Kept this at 2000px so it doesn't overlap next section!
+                    end: "+=1500",  
                     pin: true,
                     scrub: 1,
                     invalidateOnRefresh: true,
                 }
             });
 
+            tl.from(".iot-container", {
+                y: 200,
+                opacity: 0,
+                ease: "power2.inOut",
+            })
            
             // 1. These happen FIRST
             tl.from(".arduino-svg", {
@@ -134,17 +144,40 @@ function Explaination() {
                 duration: 1.5,    // Takes 1.5 seconds to glide into place
                 ease: "power3.out" 
             });
+
+            quoteTl.to(".header-explain-container", {
+                // 1. Darken the background
+                "--bg-start": "#1B1121",
+                "--bg-end": "#1B1121",
+
+                duration: 1.5,
+                ease: "none"
+            }, "<");
+
+            gsap.fromTo(".header-explain-container", 
+                {
+                    "--gradient-rotation": "180deg" // Initial state matches CSS
+                },
+                {
+                    "--gradient-rotation": "360deg", // Target state rotates it upside down
+                    ease: "none", 
+                    scrollTrigger: {
+                        trigger: ".quote-section", 
+                        start: "top center",       
+                        end: "bottom top",         
+                        scrub: true,              
+                    }
+                }
+            );
         }, { scope: mainRef });
 
 
     return(
         <>
         <div ref={mainRef}>
-
             <div className="header-explain-container">
                 <section className="header-container">
                     <div className="keyboard-layer">
-                    
                         <div className="tagline">
                             <div className="tagline-line">From a single line of code</div>
                             <div className="tagline-line" style={{ marginLeft: "32px" }}>
@@ -164,28 +197,26 @@ function Explaination() {
                         </div>
 
                     </div>
-                    {/* <img className="orangeRadiant-header" src={orangeRadiant} alt="Half Orange"/> */}
-                    
-                    
-            
                 </section>
 
                 <section className="explaination-container">
-                    {/* <img className="blueRadiant-header" src={blueRadiant} alt="Half Blue" /> */}
-                    <svg className="bg-line-svg" width="1920" height="1058" viewBox="0 0 1920 1058" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path className="draw-path" d="M1930.5 -32.9996C1930.5 25.5006 1776 508.5 1498.5 499.5C1221 490.5 1270.5 331.5 961.5 331.5C729.921 331.5 810 583.5 494.5 583.5C300.959 583.5 350 884.5 142 884.5C-9.88295 884.5 44.0007 1031 -117.5 1055.5" stroke="url(#paint0_linear_131_197)" stroke-width="20"/>
+                    {/* <img className="blueRadiant-header" src={blueRadiant} alt="Half Blue" /> */}                
+                    <svg className="bg-line-svg"  width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path className="draw-path"  d="M1937.5 -52.5C1893.17 129.333 1746.3 369.9 1525.5 373.5C1249.5 378 1273 218.5 1056.5 209C840 199.5 847.5 578 611.5 592.5C375.5 607 286 897 121.5 911C-10.1 922.2 -32.6215 1080 -11.1215 1151.5V1165.5" stroke="url(#paint0_linear_318_25)" stroke-width="60" stroke-linecap="round"/>
                     <defs>
-                    <linearGradient id="paint0_linear_131_197" x1="1699.34" y1="-80.2592" x2="-392.697" y2="355.777" gradientUnits="userSpaceOnUse">
+                    <linearGradient id="paint0_linear_318_25" x1="1835.38" y1="130.5" x2="183.879" y2="1615.5" gradientUnits="userSpaceOnUse">
                     <stop stop-color="#4291FF"/>
-                    <stop offset="1" stop-color="#8A38F5"/>
+                    <stop offset="1" stop-color="#9F4AAC"/>
                     </linearGradient>
                     </defs>
                     </svg>
 
-
                     <div className="item-container">
                         <div className="item-wrapper">
                             <div className="image-stack">
+                                <div className="iot-container">
+                                    <img src={img1} alt="" />
+                                </div>
                                 <div className="arduino-container">
                                     <svg className="arduino-svg"xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="870" height="841" viewBox="0 0 870 841" fill="none">
                                         <rect width="870" height="870" fill="url(#pattern0_184_25)"/>
@@ -218,17 +249,14 @@ function Explaination() {
                         </div>
                     </div>
                 </section>
-            </div>
-
-
-            <section className="quote-section">
+                <section className="quote-section">
                 <div className="quote-container">
                     <h1 className="quote-text">
                         Beyond the pulse lies the harmony of the machine: its <span className="highlight-pink">physical body</span> and its <span className="highlight-green">digital soul</span>.
                     </h1>
                 </div>
             </section>
-
+            </div>
         </div>
         
     </>

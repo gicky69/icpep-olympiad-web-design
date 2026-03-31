@@ -138,12 +138,12 @@ function SkewTransition() {
             y: 80, // Starts 80px lower
             opacity: 0, 
             duration: 2,
+            pin: true,
             pinSpacing: true, 
             ease: "power3.out",
             scrollTrigger: {
                 trigger: introTextRef.current,
                 start: "top 85%", // Triggers when the top of the text is 85% down the viewport
-                toggleActions: "play none none reverse" // Plays when scrolling down, reverses when scrolling back up
             }
         });
 
@@ -199,7 +199,6 @@ function SkewTransition() {
                 </div>
             </div> {/* <-- THIS DIV WAS PREVIOUSLY BELOW THE CAREERS-LAST-SECTION. MOVE IT HERE. */}
 
-            {/* 2. THE LAST SECTION (NOW TRULY OUTSIDE THE PINNED BOX) */}
             <section className="careers-last-section">
                 <div className="careers-text-container">
                     <h2 className="projects-intro-text" ref={introTextRef}>
